@@ -1,6 +1,6 @@
 # 🛍️ Shopping App
 
-A modern, feature-rich e-commerce mobile application built with Flutter, offering a seamless shopping experience for users to browse, purchase, and manage their favorite products.
+A modern mobile application built with Flutter, offering a seamless shopping experience for users to browse, purchase, and manage their favorite products.
 
 ## 📱 About The Project:
 
