@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hw_day8/constants/colors.dart';
 import 'package:hw_day8/extension/nav.dart';
 import 'package:hw_day8/screens/data_screen.dart';
 import 'package:hw_day8/screens/sign_up_screen.dart';
@@ -13,17 +15,30 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  bool hidden = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 157, 131, 201),
+        backgroundColor: AppColors.latte,
         title: Text(
-          "Login page",
-          style: TextStyle(fontSize: 24, color: Colors.white),
+          "Login",
+          style: GoogleFonts.poppins(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: AppColors.white,
+            shadows: [
+              Shadow(
+                offset: const Offset(1, 1),
+                blurRadius: 2,
+                color: AppColors.mocha.withOpacity(0.5),
+              ),
+            ],
+          ),
         ),
         centerTitle: true,
       ),
@@ -31,18 +46,47 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 100),
         child: Column(
           children: [
+            // Email
             TextFieldWidget(
-              hint: "Enter you Email",
-              icon: Icon(Icons.email),
+              hint: "Enter your Email",
+              style: GoogleFonts.poppins(
+                fontSize: 16,
+                color: AppColors.mocha,
+              ),
+              icon: const Icon(Icons.email),
               controller: emailController,
             ),
-            SizedBox(height: 24),
+
+            const SizedBox(height: 24),
+
+            // Password
             TextFieldWidget(
-              hint: "Enter you Password",
-              icon: Icon(Icons.password),
+              hint: "Enter your Password",
+              style: GoogleFonts.poppins(
+                fontSize: 16,
+                color: AppColors.mocha,
+              ),
+              icon: const Icon(Icons.lock),
               controller: passwordController,
+              obscureText: hidden,
+              suffixIcon: IconButton(
+                icon: Icon(
+                  hidden
+                      ? Icons.visibility_off
+                      : Icons.visibility,
+                  color: AppColors.mocha,
+                ),
+                onPressed: () {
+                  setState(() {
+                    hidden = !hidden;
+                  });
+                },
+              ),
             ),
-            SizedBox(height: 24),
+
+            const SizedBox(height: 24),
+
+            // Login Button
             ElevatedButton(
               onPressed: () async {
                 try {
@@ -50,24 +94,50 @@ class _LoginScreenState extends State<LoginScreen> {
                     email: emailController.text,
                     password: passwordController.text,
                   );
-
                   if (context.mounted) {
-                    context.push(DataScreen());
+                    context.push(ProductScreen());
                   }
                 } catch (e) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text("Email or password is incorrect")));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(e.toString())),
+                  );
                 }
-
               },
-              child: Text("Login"),
+              child: Text(
+                "Login",
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  color: AppColors.latte,
+                  shadows: [
+                    Shadow(
+                      offset: const Offset(1, 1),
+                      blurRadius: 2,
+                      color: AppColors.mocha.withOpacity(0.5),
+                    ),
+                  ],
+                ),
+              ),
             ),
+
+            // Sign up
             TextButton(
               onPressed: () {
-                context.pushAndClear(SignUpScreen());
+                context.pushAndClear(const SignUpScreen());
               },
-              child: Text("don't have an account? sign up"),
+              child: Text(
+                "Don't have an account? Sign up",
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  color: AppColors.mocha,
+                  shadows: [
+                    Shadow(
+                      offset: const Offset(1, 1),
+                      blurRadius: 2,
+                      color: AppColors.mocha.withOpacity(0.5),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
