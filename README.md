@@ -25,7 +25,7 @@ providing secure login and real-time data handling.
 </p>
 
 
-##🗄️ Database (Supabase):
+## 🗄️ Database (Supabase):
 
 The following screenshot shows the database table structure used in Supabase.
 
