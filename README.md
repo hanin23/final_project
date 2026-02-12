@@ -1,8 +1,8 @@
-# hw_day8
+# 🛍️ Shopping App
 
-A new Flutter project.
+A modern, feature-rich e-commerce mobile application built with Flutter, offering a seamless shopping experience for users to browse, purchase, and manage their favorite products.
 
-# 📱 Project Description:
+# 📱 About The Project:
 
 This project is a Flutter shopping application that allows users to browse products,
 view product details, and manage their shopping experience smoothly.
@@ -12,17 +12,7 @@ providing secure login and real-time data handling.
 
 # 📸 App Screenshots:
 
-![Welcome Screen](assets/welcome_screen.png)
 
-![Login Screen](assets/login_screen.png)
-
-![Product Screen](assets/product_screen.png)
-
-![Details Screen](assets/details_screen.png)
-
-![Profile Screen](assets/profile_screen.png)
-
-![Cart Screen](assets/cart_screen.png)
 
 # 🗄️ Database (Supabase):
 
